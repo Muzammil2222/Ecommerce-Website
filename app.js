@@ -209,6 +209,7 @@ var products = [
 
 var allProducts = document.getElementById('all-products')
 var cartNumber = document.getElementById('cart-number')
+var favNumber = document.getElementById('fav-number')
 
   for(var i = 0; i < products.length; i++){
     var productElement = ` <div class="lg:w-1/4 md:w-1/2 p-4 w-full border ">
@@ -221,6 +222,7 @@ var cartNumber = document.getElementById('cart-number')
       <div class = 'flex justify-between items-center w-full'>
     <p class="mt-1">$${products[i].price}</p>
     <button onclick = "addToCart(this)" class = 'btn outline border-primary px-4'>Add</button>
+    <button onclick = "favorite(this)" class = 'btn outline border-primary px-4'>Favorite</button>
     </div>
     </div>`;
 
@@ -234,6 +236,16 @@ var cartNumber = document.getElementById('cart-number')
     } else {
       cartNumber.innerText = parseInt(cartNumber.innerText) + 1;
       element.innerText = 'Added'
+  
+    }
+  }
+  function favorite(element) {
+    if (element.innerText == "Added") {
+      favNumber.innerText = favNumber.innerText - 1;
+      element.innerText = 'Add'
+    } else {
+      favNumber.innerText = parseInt(favNumber.innerText) + 1;
+      element.innerText = 'Added Favorite'
   
     }
   }
